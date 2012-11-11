@@ -30,6 +30,13 @@ def signup():
     player['phone'] = request.form['phone']
     player.save()
     return request.form['name'] + ':' + request.form['phone'] + '<br>SAVED'
+
+@app.route('/players')
+def list():
+    string = ''
+    for player in collection.Player.find():
+         string += player.name + ':' + player.phone + '<br>'
+    return string
  
 if __name__ == '__main__':
     app.run(debug=True)
