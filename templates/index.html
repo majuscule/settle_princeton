@@ -7,14 +7,13 @@
 </head>
 <body>
   <h1>Settle Princeton</h1>
+  <h2>Find Tigers to settle Catan with</h2>
   <form class='well' name='signup' method='post'>
     <label>Name</label>
     <input class="span3"name='name' id='name' type='text'>
     <label>Phone #</label>
     <input class='span3' name='phone' id='phone' type='text'>
-    <label name='updates?' id='updates?' class="checkbox">  
-      <input type='checkbox'> Check if you want updates on near-full games!
-    </label>  
+   <label>3 or 4 players?</label>
     <div class="btn-group" data-toggle-name="is_private" data-toggle="buttons-radio" >
       <button type="button" value="0" class="btn" data-toggle="button">3</button>
       <button type="button" value="1" class="btn" data-toggle="button">4</button>
@@ -22,6 +21,9 @@
     </div>
     <input type="hidden" name="is_private" value="0" />
     <br /><br />
+    <label name='updates?' id='updates?' class="checkbox">  
+      <input type='checkbox'> Check if you want updates on near-full games!
+    </label>  
     <button type='submit' class='btn'>Submit</button>
   </form>
 </body>
