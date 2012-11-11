@@ -31,8 +31,8 @@ def signup():
     ready = False
     def addTo(collection):
         player = collection.Player()
+        player['phone'] = u''.join(c for c in request.form['phone'] if c.isdigit())
         player['name'] = request.form['name']
-        player['phone'] = request.form['phone']
         player.save()
     def checkReady(collection, i):
         count = collection.count()
