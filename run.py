@@ -65,16 +65,10 @@ def signup():
 
 @app.route('/players')
 def list():
-    string = str(quads.count()) + ' Quad Players:<br>'
-    for player in quads.Player.find():
-         string += player.name + ':' + player.phone + '<br>'
-    string += str(triplets.count()) + ' Triplet Players:<br>'
-    for player in triplets.Player.find():
-         string += player.name + ':' + player.phone + '<br>'
-    string += str(singles.count()) + ' Single Players:<br>'
-    for player in singles.Player.find():
-         string += player.name + ':' + player.phone + '<br>'
-    return string
+    return render_template('players.html',
+                            quads=quads.Player.find(),
+                            triplets=triplets.Player.find(),
+                            singles=singles.Player.find())
  
 if __name__ == '__main__':
     app.run(debug=True)
