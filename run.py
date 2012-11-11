@@ -39,7 +39,8 @@ def signup():
         if count == i:
             ready = True
         elif count == i-1 and singles.count() > 0:
-            #pop off single
+            single = singles.find_one()
+            singles.remove({'_id':single['_id']})
             ready = True
         if ready:
             collection.remove()
