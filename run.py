@@ -54,7 +54,7 @@ def signup():
     elif request.form['size'] == '0':
         addTo(singles)
         ready == checkReady(quads, 4) or checkReady(triplets, 3)
-    if ready:
+    if ready or singles.count() == 3:
         return "play!"
     else:
         return "we'll let you know"
