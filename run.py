@@ -16,7 +16,6 @@ connection.register([Player])
 triplets = connection.games.triplets
 quads = connection.games.quads 
 singles = connection.games.singles
-persisent = connection.games.singles
 
 @app.route('/', methods=['GET'])
 def index():
@@ -35,15 +34,14 @@ def signup():
         ready = False
         if count == i:
             ready = True
-        elif count == i-1 and singles.count() > 0:
-            single = singles.find_one()
-            singles.remove({'_id':single['_id']})
+        elif singles.count() + count >= i:
+            while singles.count() + count >= i:
+                single = singles.find_one()
+                singles.remove({'_id':single['_id']})
             ready = True
         if ready:
             collection.remove()
         return ready
-    if request.form['updates']:
-        addTo(persisent)
     if request.form['size'] == '3':
         addTo(triplets)
         ready = checkReady(triplets, 3)
@@ -59,8 +57,6 @@ def signup():
     if ready or singles.count() == 3:
         return "play!"
     else:
-        if checkReady(quads, 3) or checkReady(triplets, 2) or singles.count() == 2:
-            map(lambda x:x, persisent.find())
         return "we'll let you know"
     #return request.form['name'] + ':' + request.form['phone'] + '-' + request.form['size'] + '-' + request.form['updates']
 
