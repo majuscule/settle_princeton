@@ -35,7 +35,7 @@ def signup():
         if count == i:
             ready = True
         elif singles.count() + count >= i:
-            while singles.count() + count >= i:
+            while --i > 0:
                 single = singles.find_one()
                 singles.remove({'_id':single['_id']})
             ready = True
@@ -51,14 +51,13 @@ def signup():
     elif request.form['size'] == '0':
         addTo(singles)
         ready == checkReady(quads, 4) or checkReady(triplets, 3)
-    elif singles.count() == 3:
-        singles.remove()
-        ready = True
-    if ready or singles.count() == 3:
+        if singles.count() == 3:
+            singles.remove()
+            ready = True
+    if ready:
         return "play!"
     else:
         return "we'll let you know"
-    #return request.form['name'] + ':' + request.form['phone'] + '-' + request.form['size'] + '-' + request.form['updates']
 
 @app.route('/players')
 def list():
