@@ -8,6 +8,7 @@ jQuery(function($) {
       var button = $(this);
       button.live('click', function(){
           hidden.val($(this).val());
+          console.log("hello");
       });
       if(button.val() == hidden.val()) {
         button.addClass('active');
