@@ -16,6 +16,7 @@ connection.register([Player])
 triplets = connection.games.triplets
 quads = connection.games.quads 
 singles = connection.games.singles
+persistent = connection.games.singles
 
 @app.route('/', methods=['GET'])
 def index():
@@ -42,6 +43,8 @@ def signup():
         if ready:
             collection.remove()
         return ready
+    if 'updates' in request.form:
+        addTo(persistent)
     if request.form['size'] == '3':
         addTo(triplets)
         ready = checkReady(triplets, 3)
