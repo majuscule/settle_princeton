@@ -1,17 +1,22 @@
 <html>
 <head>
-  <meta charset='utf-8' />
+  <meta charset="utf-8">
   <title>Settle Princeton</title>
-  <link rel='stylesheet' href='/static/style.css' type='text/css' />
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+  <style>.content {padding-top: 80px;}</style>
 </head>
 <body>
   <h1>Settle Princeton</h1>
-  <form name='signup' action='/' method='post'>
-    <div>Name:<br>Phone:</div>
-    <input name='name' id='name' type='text' /><br>
-    <input name='phone' id='phone' type='text' />
-    <br><br>
-    <input name='submit' id='submit' type='submit' />
+  <form class='well' name='signup' method='post'>
+    <label>Name</label>
+    <input class="span3"name='name' id='name' type='text'>
+    <label>Phone #</label>
+    <input class="span3" name='phone' id='phone' type='text'>
+    <label name='updates?' id='updates?' class="checkbox">  
+      <input type="checkbox"> Check if you want updates on near-full games! 
+    </label>  
+    
+    <button type='submit' class="btn">Submit</button>
   </form>
 </body>
 </html>
