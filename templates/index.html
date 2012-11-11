@@ -17,15 +17,15 @@
     <label>Phone #</label>
     <input class='span3' name='phone' id='phone' type='text'>
    <label>3 or 4 players?</label>
-    <div class="btn-group" data-toggle-name="is_private" data-toggle="buttons-radio" >
+    <div class="btn-group" data-toggle-name="size" data-toggle="buttons-radio" >
       <button type="button" value="3" class="btn" data-toggle="button">3</button>
       <button type="button" value="4" class="btn" data-toggle="button">4</button>
       <button type="button" value="0" class="btn" data-toggle="button">I don't care</button>
     </div>
-    <input type="hidden" name="is_private" value="0" />
+    <input type="hidden" name="size" value="0" />
     <br /><br />
-    <label name='updates?' id='updates?' class="checkbox">  
-      <input type='checkbox'> Check if you want updates on near-full games!
+    <label id='updates' class="checkbox">  
+      <input name='updates' type='checkbox'> Check if you want updates on near-full games!
     </label>  
     <button type='submit' class='btn'>Submit</button>
   </form>

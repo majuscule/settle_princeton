@@ -29,7 +29,7 @@ def signup():
     player['name'] = request.form['name']
     player['phone'] = request.form['phone']
     player.save()
-    return request.form['name'] + ':' + request.form['phone'] + '<br>SAVED'
+    return request.form['name'] + ':' + request.form['phone'] + '-' + request.form['size'] + '-' + request.form['updates'] + '<br>SAVED'
 
 @app.route('/players')
 def list():
