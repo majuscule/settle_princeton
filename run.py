@@ -33,7 +33,7 @@ def signup():
 
 @app.route('/players')
 def list():
-    string = ''
+    string = str(collection.count()) + ' Players:<br><br>'
     for player in collection.Player.find():
          string += player.name + ':' + player.phone + '<br>'
     return string
