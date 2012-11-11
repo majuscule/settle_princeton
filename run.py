@@ -36,6 +36,7 @@ def signup():
         if count == i:
             ready = True
         elif singles.count() + count >= i:
+            i -= count;
             while --i > 0:
                 single = singles.find_one()
                 singles.remove({'_id':single['_id']})
