@@ -17,7 +17,8 @@ class Player(Document):
 
 connection = Connection()
 connection.register([Player])
-collection = connection.games.players
+triplets = connection.games.triplets
+quads = connection.games.quads 
 
 @app.route('/', methods=['GET'])
 def index():
@@ -25,10 +26,20 @@ def index():
 
 @app.route('/', methods=['POST'])
 def signup():
-    player = collection.Player()
-    player['name'] = request.form['name']
-    player['phone'] = request.form['phone']
-    player.save()
+    def add(collection):
+        player = collection.Player()
+        player['name'] = request.form['name']
+        player['phone'] = request.form['phone']
+        player.save()
+        if collection.count() == 3:
+            connection.games.drop_collection('players')
+            return "<h1>PLAY NOW</h1>"
+    if request.form['size'] == 3:
+        add(triplets)
+    elif request.form['size'] == 4:
+        add(quads)
+    elif request.form['size'] == 0:
+        return "<h1>We'll let you know</h1>"
     return request.form['name'] + ':' + request.form['phone'] + '-' + request.form['size'] + '-' + request.form['updates'] + '<br>SAVED'
 
 @app.route('/players')
