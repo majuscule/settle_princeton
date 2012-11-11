@@ -1,7 +1,11 @@
 from flask import Flask, render_template, request
 from mongokit import Connection, Document
+from twilio.rest import TwilioRestClient
 
 app = Flask(__name__)
+
+app.config.from_object('config.Config')
+twilio = TwilioRestClient(app.config['ACCOUNT_ID'], app.config['API_KEY'])
 
 class Player(Document):
     structure = {
